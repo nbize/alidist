@@ -132,6 +132,7 @@ cmake $SOURCEDIR                                                                
       -DCMAKE_CXX_COMPILER=$COMPILER_CXX                                               \
       -DCMAKE_C_COMPILER=$COMPILER_CC                                                  \
       -Dfortran=OFF                                                                    \
+      -Dbuiltin_glew=ON                                                                \
       -DCMAKE_LINKER=$COMPILER_LD                                                      \
       ${GCC_TOOLCHAIN_REVISION:+-DCMAKE_EXE_LINKER_FLAGS="-L$GCC_TOOLCHAIN_ROOT/lib64"} \
       ${OPENSSL_ROOT:+-DOPENSSL_ROOT=$OPENSSL_ROOT}                                    \
