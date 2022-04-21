@@ -1,6 +1,6 @@
 package: ucx
 version: "%(tag_basename)s"
-tag: v1.12.1-rc2
+tag: v1.12.1
 requires:
   - "GCC-Toolchain:(?!osx)"
 build_requires:
@@ -39,7 +39,6 @@ rsync -a --delete --exclude "**/.git" ${SOURCEDIR}/ .
 
 make ${JOBS+-j$JOBS} || make -j1
 make install
-
 
 # Modulefile
 MODULEDIR="$INSTALLROOT/etc/modulefiles"

@@ -1,9 +1,11 @@
 package: O2-full-system-test
 version: "1.0"
 requires:
-  - O2Suite
-  - O2sim
+  - O2
   - O2DPG
+  - QualityControl
+  - O2sim
+  - O2Physics
 force_rebuild: 1
 ---
 #!/bin/bash -e
@@ -17,6 +19,7 @@ mkdir $BUILDDIR/full-system-test-sim
 pushd $BUILDDIR/full-system-test-sim
 export JOBUTILS_PRINT_ON_ERROR=1
 export JOBUTILS_JOB_TIMEOUT=1800
+export PRINT_WORKFLOW=1
 export NHBPERTF=128
 export SHMSIZE=8000000000
 ALICE_O2SIM_DUMPLOG=1 NEvents=5 NEventsQED=100 O2SIMSEED=12345 $O2_ROOT/prodtests/full_system_test.sh
@@ -29,7 +32,7 @@ rm -Rf $BUILDDIR/sim-challenge
 mkdir $BUILDDIR/sim-challenge
 pushd $BUILDDIR/sim-challenge
 # SIM_CHALLENGE_ANATESTING=ON --> reenable when we want analysis testing be part of the tests 
-$O2_ROOT/prodtests/sim_challenge.sh &> sim-challenge.log
+"$O2_ROOT/prodtests/sim_challenge.sh" &> sim-challenge.log || true  # don't quit immediately on error
 result=$(grep "Return status" sim-challenge.log | grep -v ": 0" || true)
 if [ "${result}" ]; then
   # something is wrong if we get a match here
