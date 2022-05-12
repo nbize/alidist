@@ -1,12 +1,12 @@
 package: Python-modules
 version: "1.0"
 requires:
-  - "Python:slc.*"
-  - "Python-system:(?!slc.*)"
+  - "Python:(slc|ubuntu)"
+  - "Python-system:(?!slc.*|ubuntu)"
   - FreeType
   - libpng
 build_requires:
-  - system-curl
+  - curl
   - Python-modules-list
   - alibuild-recipe-tools
 prepend_path:
