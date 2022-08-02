@@ -6,7 +6,7 @@ env:
   LHAPATH: "$LHAPDF5_ROOT/share/lhapdf"
 requires:
   - "GCC-Toolchain:(?!osx)"
-  - Python-modules
+  - Python-modules:(?!osx_arm64)
 build_requires:
   - curl
 ---
@@ -14,7 +14,7 @@ build_requires:
 
 rsync -a --exclude '**/.git' $SOURCEDIR/ ./
 
-./configure --prefix=$INSTALLROOT
+./configure --prefix=$INSTALLROOT FCFLAGS="$FCFLAGS -std=legacy"
 
 make ${JOBS+-j $JOBS} all
 make install

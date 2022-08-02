@@ -1,6 +1,6 @@
 package: MLModels
 version: "%(tag_basename)s"
-tag: "e087b6c"
+tag: "20220530"
 source: https://github.com/alisw/MLModels.git
 build_requires:
  - alibuild-recipe-tools
