@@ -32,7 +32,6 @@ make ${JOBS:+-j$JOBS} install
 mkdir -p etc/modulefiles
 alibuild-generate-module > etc/modulefiles/$PKGNAME
 cat >> etc/modulefiles/$PKGNAME <<EoF
-
 # Our environment
 set EVTGEN_ROOT \$::env(BASEDIR)/$PKGNAME/\$version
 setenv EVTGEN_ROOT \$EVTGEN_ROOT
